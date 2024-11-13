@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang= "en">
+    <head>
+        <meta charset= "utf-8">
+        <meta name="viewport" content= "width=device-width, initial-scale=1.0">
+        <title>My First REST API</title>
+
+
+        <script>
+            function resetAndSubmit() {
+                // Reset the form
+                document.getElementById("read-subs").reset();
+                
+                // Submit the form
+                document.getElementById("read-subs").submit();
+            }
+        </script>
+
+        <script>
+            document.getElementById('read-sub').addEventListener('submit', function (e) {
+                const idValue = document.getElementById('id').value;  // Get the input value
+                this.action = `/subscribers/${idValue}`;  // Dynamically set the form action with the ID
+            });
+        </script>
+    </head>
+
+    <body>
+        <h1>Subscribers API</h1>
+
+        <!--CREATE Subscriber-->
+        <section>
+            <h2>Create Subscriber</h2>
+            <form id="create-sub" action="/subscribers" method="POST">
+                <!-- Name Field -->
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+                <br><br>
+
+                <!-- Subscribed To Channel Field -->
+                <label for="subscribedToChannel">Channel Subscribed To:</label>
+                <input type="text" id="subscribedToChannel" name="subscribedToChannel" required>
+                <br><br>
+
+                <!-- Date Field -->
+                <label for="date">Date Subscribed:</label>
+                <input type="date" id="date" name="date">
+
+                <!-- Submit Button -->
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+        
+        <!--READ Subscriber(s)-->
+        <section>
+            <h2>View Subscriber(s)</h2>
+
+            <form id="read-sub" action="/subscribers" method="GET">
+                <!-- View Single Subscriber -->
+                <label for="id">ID(To View Single Subscriber):</label>
+                <input type="text" id="id" name="id" required>
+                <button type="submit">View Single Subscriber</button>
+                <br><br>
+            </form>
+
+            <form id="read-subs">
+                <!-- View All Subscribers -->
+                <button type="button" onclick="resetAndSubmit()">View All Subscribers</button>
+                <br><br>
+            </form>
+        </section>
+
+        <!--UPDATE Subscriber Info-->
+        <section>
+            <h2>Update User(ID required)</h2>
+        </section>
+
+        <!--DELETE Subscriber-->
+        <section>
+            <h2>Delete User</h2>
+        </section>
+    </body>
+</html>
