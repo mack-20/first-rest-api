@@ -24,23 +24,24 @@ router.post('/', async (req, res) => {
     }
 })
 
-// Read All Users(R)
+// Read User(s) (R)
 router.get('/', async (req, res) => {
-    try{
-        const subscribers = await Subscriber.find()
-        res.json(subscribers)
-    }catch(error){
-        res.status(500).json({Error: error.message})
+    const subscriberId = req.query.id
+    if (subscriberId != null){
+        try{
+            const subscriber = await Subscriber.findById(subscriberId)
+            res.json(subscriber)
+        }catch(error){
+            res.status(404).json({Error: error.message})
+        }
     }
-})
-
-// Read Single User(R)
-router.get('/:id', (req, res) => {
-    try{
-        const subscriber = Subscriber.findById(req.params.id)
-        res.json(subscriber)
-    }catch(error){
-        res.status(500).json({Message: error.message})
+    else{
+        try{
+            const subscribers = await Subscriber.find()
+            res.json(subscribers)
+        }catch(error){
+            res.status(500).json({Error: error.message})
+        }
     }
 })
 

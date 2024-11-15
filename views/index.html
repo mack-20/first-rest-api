@@ -4,24 +4,6 @@
         <meta charset= "utf-8">
         <meta name="viewport" content= "width=device-width, initial-scale=1.0">
         <title>My First REST API</title>
-
-
-        <script>
-            function resetAndSubmit() {
-                // Reset the form
-                document.getElementById("read-subs").reset();
-                
-                // Submit the form
-                document.getElementById("read-subs").submit();
-            }
-        </script>
-
-        <script>
-            document.getElementById('read-sub').addEventListener('submit', function (e) {
-                const idValue = document.getElementById('id').value;  // Get the input value
-                this.action = `/subscribers/${idValue}`;  // Dynamically set the form action with the ID
-            });
-        </script>
     </head>
 
     <body>
@@ -57,14 +39,14 @@
             <form id="read-sub" action="/subscribers" method="GET">
                 <!-- View Single Subscriber -->
                 <label for="id">ID(To View Single Subscriber):</label>
-                <input type="text" id="id" name="id" required>
+                <input type="text" id="id" name="id" placeholder="Enter Subscriber ID" required>
                 <button type="submit">View Single Subscriber</button>
                 <br><br>
             </form>
 
             <form id="read-subs" action="/subscribers" method="GET">
                 <!-- View All Subscribers -->
-                <button type="button" onclick="resetAndSubmit()">View All Subscribers</button>
+                <button type="submit">View All Subscribers</button>
                 <br><br>
             </form>
         </section>
