@@ -54,7 +54,20 @@
 
         <!--UPDATE Subscriber Info-->
         <section>
-            <h2>Update User(ID required)</h2>
+            <h2>Edit Subscriber Channel</h2>
+
+            <form action="/subscribers" method="GET">
+                <p><em>To view all subscribers, leave Subscriber ID <b>blank</b>, else input Subscriber ID</em></p>
+                <fieldset>
+                    <legend style="text-align: center;">View Subscriber(s)</legend>
+                    <!-- View Single or Multiple Subscriber(s) -->
+                    <label for="id">Subscriber ID:</label>
+                    <input type="text" id="id" name="id" placeholder="Enter Subscriber ID">
+                    <button type="submit">View Subscriber(s)</button>
+                    <br><br>
+                </fieldset>
+            </form>
+
         </section>
 
         <!--DELETE Subscriber-->
