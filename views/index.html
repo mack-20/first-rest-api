@@ -13,22 +13,25 @@
         <section>
             <h2>Create Subscriber</h2>
             <form id="create-sub" action="/subscribers" method="POST">
-                <!-- Name Field -->
-                <label for="name">Full Name:</label>
-                <input type="text" id="name" name="name" required>
-                <br><br>
+                <fieldset>
+                    <legend style="text-align: center;">Create Subscriber</legend>
+                    <!-- Name Field -->
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Maxwell Diga Hernandez" required>
+                    <br><br>
 
-                <!-- Subscribed To Channel Field -->
-                <label for="subscribedToChannel">Channel Subscribed To:</label>
-                <input type="text" id="subscribedToChannel" name="subscribedToChannel" required>
-                <br><br>
+                    <!-- Subscribed To Channel Field -->
+                    <label for="subscribedToChannel">Channel Subscribed To:</label>
+                    <input type="text" id="subscribedToChannel" name="subscribedToChannel" placeholder="freecodecamp" required>
+                    <br><br>
 
-                <!-- Date Field -->
-                <label for="date">Date Subscribed:</label>
-                <input type="date" id="date" name="date">
+                    <!-- Date Field -->
+                    <label for="date">Date Subscribed:</label>
+                    <input type="date" id="date" name="date">
 
-                <!-- Submit Button -->
-                <button type="submit">Submit</button>
+                    <!-- Submit Button -->
+                    <button type="submit">Submit</button>
+                </fieldset>
             </form>
         </section>
         
@@ -36,18 +39,16 @@
         <section>
             <h2>View Subscriber(s)</h2>
 
-            <form id="read-sub" action="/subscribers" method="GET">
-                <!-- View Single Subscriber -->
-                <label for="id">ID(To View Single Subscriber):</label>
-                <input type="text" id="id" name="id" placeholder="Enter Subscriber ID" required>
-                <button type="submit">View Single Subscriber</button>
-                <br><br>
-            </form>
-
-            <form id="read-subs" action="/subscribers" method="GET">
-                <!-- View All Subscribers -->
-                <button type="submit">View All Subscribers</button>
-                <br><br>
+            <form action="/subscribers" method="GET">
+                <p><em>To view all subscribers, leave Subscriber ID <b>blank</b>, else input Subscriber ID</em></p>
+                <fieldset>
+                    <legend style="text-align: center;">View Subscriber(s)</legend>
+                    <!-- View Single or Multiple Subscriber(s) -->
+                    <label for="id">Subscriber ID:</label>
+                    <input type="text" id="id" name="id" placeholder="Enter Subscriber ID">
+                    <button type="submit">View Subscriber(s)</button>
+                    <br><br>
+                </fieldset>
             </form>
         </section>
 

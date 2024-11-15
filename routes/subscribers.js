@@ -1,7 +1,6 @@
 const express = require('express')
-
+const mongoose = require('mongoose')
 const router = express.Router()
-
 const Subscriber = require('../models/subscriber')
 
 // Create User(C)
@@ -27,9 +26,18 @@ router.post('/', async (req, res) => {
 // Read User(s) (R)
 router.get('/', async (req, res) => {
     const subscriberId = req.query.id
-    if (subscriberId != null){
+    if (subscriberId != null && subscriberId !== ''){
+        if (!mongoose.Types.ObjectId.isValid(subscriberId)){
+            return res.status(400).json({Error: 'Invalid Subscriber ID format'})
+        }
+
         try{
             const subscriber = await Subscriber.findById(subscriberId)
+
+            if (!subscriber){
+                return res.status(404).json({Error: 'Subscriber not found'})
+            }
+
             res.json(subscriber)
         }catch(error){
             res.status(404).json({Error: error.message})
@@ -46,7 +54,7 @@ router.get('/', async (req, res) => {
 })
 
 // Update User(U)
-router.patch('/:id', (req, res) => {
+router.patch('/', (req, res) => {
 
 })
 
