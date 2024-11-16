@@ -1,0 +1,17 @@
+PATCH http://localhost:3000/subscribers
+Content-Type: application/json 
+
+{
+    "id": "67382fefb0c4c059fcc648ae",
+    "name": "Bucky",
+    "subscribedToChannel": "TEDx" 
+}
+
+###
+# Get All Subscribers
+GET http://localhost:3000/subscribers
+
+
+###
+# Get specific Subscriber
+GET http://localhost:3000/subscribers/?id=67382fefb0c4c059fcc648ae
