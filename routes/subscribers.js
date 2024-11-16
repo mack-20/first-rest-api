@@ -58,8 +58,9 @@ router.get('/', async (req, res) => {
 
 // Have a lot of patching to do here....................
 // Update User(U)
-router.patch('/', async (req, res) => {
-    const subscriberId = req.body.id
+router.patch('/:id', async (req, res) => {
+    const subscriberId = req.params.id
+    
     const subscriberNewName = req.body.name
     const subscriberNewChannel = req.body.subscribedToChannel
 
@@ -103,7 +104,29 @@ router.patch('/', async (req, res) => {
 
 
 // Delete User(D)
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
+    const subscriberId = req.params.id
+
+    if(subscriberId != null || subscriberId != ''){
+        if(!mongoose.Types.ObjectId.isValid(subscriberId)){
+            return res.status(400).json({Message: 'Invlaid Subscriber Id'})
+        }
+
+        try{
+            const subscriber = await Subscriber.findById(subscriberId)
+            
+            if(!subscriber){
+                return res.status(404).json({Error: 'Subscriber Not Found'})
+            }
+
+            const result = await subscriber.deleteOne()
+
+            res.json({Message: 'Subscriber Deleted Successfully'})
+        }catch(error){
+            res.json({Message: error.message})
+        }
+        
+    }
 
 })
 

@@ -1,17 +1,64 @@
-PATCH http://localhost:3000/subscribers
+# API SEQUENTIAL TESTING OF CRUD OPERATIONS
+
+
+# CREATE(C)
+
+### 1
+POST http://localhost:3000/subscribers
+Content-Type: application/json
+
+{
+    "name": "Johnson Ugo Daniel",
+    "subscribedToChannel": "KNUST"
+}
+
+### 2
+POST http://localhost:3000/subscribers
+Content-Type: application/json
+
+{
+    "name": "John Quaye",
+    "subscribedToChannel": "Chemu SHS"
+}
+
+### 3
+POST http://localhost:3000/subscribers
+Content-Type: application/json
+
+{
+    "name": "Emmanuel Owusu",
+    "subscribedToChannel": "SmartGuys"
+}
+
+
+
+
+
+# READ(R)
+
+### 1 (Read all Subscribers)
+GET http://localhost:3000/subscribers
+
+### 2 (Read specific Subscriber)
+GET http://localhost:3000/subscribers/?id=6738f8a1c377173b1720638c
+
+
+
+
+# UPDATE(U)
+### 1
+PATCH http://localhost:3000/subscribers/6738fa65537cd0e33e3591e4
 Content-Type: application/json 
 
 {
-    "id": "67382fefb0c4c059fcc648ae",
-    "name": "Bucky",
+    "name": "Judith",
     "subscribedToChannel": "TEDx" 
 }
 
-###
-# Get All Subscribers
-GET http://localhost:3000/subscribers
 
 
-###
-# Get specific Subscriber
-GET http://localhost:3000/subscribers/?id=67382fefb0c4c059fcc648ae
+
+
+# DELETE(D)
+### 1
+DELETE http://localhost:3000/subscribers/6738fa65537cd0e33e3591e4

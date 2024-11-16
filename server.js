@@ -16,10 +16,6 @@ db.once('open', () => console.log('Connected to Database'))
 const subscribersRoute = require('./routes/subscribers')
 app.use('/subscribers', subscribersRoute)
 
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/views/index.html')
-})
-
 app.listen(process.env.PORT || 3000, () => {
     console.log('Server Started')
     console.log(`Listening on port ${process.env.port || 3000}...`)
